@@ -4,7 +4,7 @@ namespace Corp\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ArticleController extends Controller
+class PhotoController extends Controller
 {
     //
 }

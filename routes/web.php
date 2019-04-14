@@ -23,7 +23,12 @@ Route::resource('/','IndexController',[
 									  	'names'=>['index'=>'home']
 									  ]);
 
-Route::resource('articles','ArticleController',[
+Route::resource('articles','ArticlesController',[
 										'parametres' =>[
 											'articles' => 'alias']
+									  ]);
+
+Route::resource('photos','PhotoController',[
+										'parametres' =>[
+											'photos' => 'id']
 									  ]);

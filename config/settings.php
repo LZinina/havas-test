@@ -1,5 +1,7 @@
 <?php 
 return [
-'home_port_count' => 4
+'home_art_count' => 2,
+'home_photo_count' => 2,
+'paginate' =>3
 ]
 ?>

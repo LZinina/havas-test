@@ -6,6 +6,7 @@ use Corp\Http\Requests;
 use Illuminate\Http\Request;
 use Corp\Repositories\SlidersRepository;
 use Corp\Repositories\ArticlesRepository;
+
 use Config;
 
 
@@ -14,7 +15,7 @@ class IndexController extends SiteController
 
     public function __construct(SlidersRepository $s_rep, ArticlesRepository $a_rep){
 
-        parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
+        parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu),new \Corp\Repositories\PhotosRepository(new \Corp\Photo));
         
         $this->s_rep = $s_rep;
         $this->a_rep = $a_rep;
@@ -42,11 +43,16 @@ class IndexController extends SiteController
 
         $this->vars = array_add($this->vars,'sliders',$sliders);
 
+        $this->keywords = 'Havas.uz';
+        $this->meta_desc = 'Havas.uz';
+        $this->title_head = 'Havas guruhi';
+        $this->content_head = 'Главная';
+
         return $this->renderOutput();
     }
 
     protected function getArticles() {
-        $article = $this->a_rep->get('*',Config::get('settings.home_port_count'));
+        $article = $this->a_rep->get('*',Config::get('settings.home_art_count'));
 
         return $article;
 
