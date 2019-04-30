@@ -46,16 +46,15 @@ class IndexController extends SiteController
         $this->keywords = 'Havas.uz';
         $this->meta_desc = 'Havas.uz';
         $this->title_head = 'Havas guruhi';
-        $this->content_head = 'Главная';
+        $this->content_head = 'Новости';
 
         return $this->renderOutput();
     }
 
-    protected function getArticles() {
-        $article = $this->a_rep->get('*',Config::get('settings.home_art_count'));
-
-        return $article;
-
+    protected function getArticles($alias=FALSE) {
+        $articles = $this->a_rep->get('*',FALSE,TRUE);
+       
+        return $articles;
     }
 
      public function getSliders()

@@ -17,12 +17,14 @@ abstract class Repository  {
 		}
 
 		if($pagination) {
+
 			return $this->check($builder->paginate(Config::get('settings.paginate')));
 		}
 
 		return $this->check($builder->get()); 
 
 	}
+	
 	protected function check($result) {
 
 		if($result->isEmpty()) {
@@ -41,8 +43,13 @@ abstract class Repository  {
 		});
 
 		return $result;
+	}
 
+	public function one($alias, $attr = array()) {
 
+		$result = $this->model->where('alias',$alias)->first();
+
+		return $result;
 	}
 }
 ?>

@@ -32,3 +32,5 @@ Route::resource('photos','PhotoController',[
 										'parametres' =>[
 											'photos' => 'id']
 									  ]);
+
+Route::resource('comment','CommentController',['only'=>['store']]);

@@ -175,6 +175,7 @@ return [
         Corp\Providers\EventServiceProvider::class,
         Corp\Providers\RouteServiceProvider::class,
         'Lavary\Menu\ServiceProvider',
+        
 
     ],
 

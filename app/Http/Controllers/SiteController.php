@@ -21,6 +21,7 @@ class SiteController extends Controller
 	protected $s_rep;//slider
 	protected $a_rep;//articles
 	protected $m_rep;//menus
+    protected $c_rep; //photos
 
 	protected $keywords; 
 	protected $meta_desc;
