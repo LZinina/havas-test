@@ -22,31 +22,25 @@ class SiteController extends Controller
 	protected $a_rep;//articles
 	protected $m_rep;//menus
     protected $c_rep; //photos
+    protected $mus_rep;//musics
 
 	protected $keywords; 
 	protected $meta_desc;
 	protected $title_head;
 	protected $content_head;
+    protected $bar;
 
 	protected $template;
 
 	protected $vars = array();
 
-	protected $contentRightBar = FALSE;
-	
-	protected $contentLeftBar = FALSE;
-
-
-	protected $bar = FALSE;
-    
-    public function __construct(MenusRepository $m_rep, PhotosRepository $p_rep) {
-
+	public function __construct(MenusRepository $m_rep) 
+    {
     	$this->m_rep = $m_rep;
-    	$this->p_rep = $p_rep;
-
     }
     
-    protected function renderOutput(){
+    protected function renderOutput()
+    {
 
     	$menu = $this->getMenu();
 
@@ -54,12 +48,6 @@ class SiteController extends Controller
     	
     	$this->vars = array_add($this->vars,'navigation',$navigation);
 
-    	$photos=$this->getPhotos();
-    	//dd($photos);
-    	
-    	$indexBar = view(env('THEME').'.indexBar')->with('photos',$photos)->render();
-    	$this->vars = array_add($this->vars,'indexBar',$indexBar);	
-    	
     	$footer = view(env('THEME').'.footer')->render();
     	$this->vars = array_add($this->vars,'footer',$footer);	
     	
@@ -67,16 +55,12 @@ class SiteController extends Controller
 		$this->vars = array_add($this->vars,'meta_desc',$this->meta_desc);	
 		$this->vars = array_add($this->vars,'title_head',$this->title_head);
 		$this->vars = array_add($this->vars,'content_head',$this->content_head);
+        $this->vars = array_add($this->vars,'bar',$this->bar);
 
     	return view($this->template)->with($this->vars);
     }
 
-    protected function getPhotos() {
-        $photo = $this->p_rep->get(['image','title','created_at'],Config::get('settings.home_photo_count'));
-
-        return $photo;
-
-    }
+    
     
     protected function getMenu() {
 

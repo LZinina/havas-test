@@ -10,7 +10,11 @@
     <title>{{ $title_head }}</title>
 
     <!-- Bootstrap core CSS -->
-<link href="{{asset(env('THEME'))}}/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{{asset(env('THEME'))}}/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{{asset(env('THEME'))}}/css/prettyPhoto.css" rel="stylesheet">
+    <link href="{{asset(env('THEME'))}}/css/album.css" rel="stylesheet">
+
+
 
 
     <style>
@@ -67,8 +71,9 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="blog.css" rel="stylesheet">
-    <link href="{{asset(env('THEME'))}}/style.css" rel="stylesheet">
+    <link href="{{asset(env('THEME'))}}/css/audio-player.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    
 </head>
 
   <body class="bg-bl">
@@ -89,7 +94,9 @@
       <div class="wrap_result"></div>
       @yield('content')
   </div><!-- /.blog-main -->
+  <aside class="col-md-4 blog-sidebar">
       @yield('indexBar')
+  </aside>
   </div><!-- /.row -->
 
 </main><!-- /.container -->
@@ -99,13 +106,21 @@
 <script
         src="https://code.jquery.com/jquery-3.4.0.min.js"
         integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
-        crossorigin="anonymous"></script>
-<script >window.jQuery || document.write('<script src="{{asset(env('THEME'))}}/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="{{asset(env('THEME'))}}/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+</script>
+<script >window.jQuery || document.write('<script src="{{asset(env('THEME'))}}/js/vendor/jquery-slim.min.js"><\/script>')
+</script>
+<script src="{{asset(env('THEME'))}}/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous">
+</script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{asset(env('THEME'))}}/js/comment-reply.js"></script>
 <script src="{{asset(env('THEME'))}}/js/myscripts.js" ></script>
 
+<script src="{{asset(env('THEME'))}}/js/photojs/popper.min.js"></script>
+<script src="{{asset(env('THEME'))}}/js/photojs/mauGallery.min.js"></script>
+<script src="{{asset(env('THEME'))}}/js/photojs/scripts.js"></script>
+<script src="{{asset(env('THEME'))}}/js/musicjs/main.js" type="text/javascript"></script>
+<script src="{{asset(env('THEME'))}}/js/musicjs/jquery-ui-1.8.21.custom.min.js" type="text/javascript"></script>
 </div>
 </body>
 </html>

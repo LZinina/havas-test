@@ -15,7 +15,7 @@
 //    return view('welcome');
 //});
 
-//Auth::routes();
+Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/','IndexController',[
@@ -32,5 +32,17 @@ Route::resource('photos','PhotoController',[
 										'parametres' =>[
 											'photos' => 'id']
 									  ]);
-
 Route::resource('comment','CommentController',['only'=>['store']]);
+
+Route::resource('music','MusicController',[
+										'parametres' =>[
+											'musics' => 'id']
+									  ]);
+Route::match(['get','post'],'/contacts',['uses'=>'ContactsController@index','as'=>'contacts']);
+
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+	//admin
+	Route::get('/',['uses' =>'Admin\IndexController@index','as' => 'adminIndex']);
+	
+	Route::resource('/articles','Admin\ArticlesController');
+});

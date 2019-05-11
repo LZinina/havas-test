@@ -8,5 +8,6 @@ return [
 'parent_id' => '1',
 'user' => true,
 'show_immediately' => true,
+'email'=>'',
 ]
 ?>

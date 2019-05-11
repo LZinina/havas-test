@@ -6,14 +6,17 @@ use Illuminate\Http\Request;
 
 use Corp\Repositories\ArticlesRepository;
 use Corp\Repositories\CommentsRepository;
+use Corp\Repositories\PhotosRepository;
+use Photo;
+use Config;
 
 class ArticlesController extends SiteController
 {
-    public function __construct(ArticlesRepository $a_rep, CommentsRepository $c_rep){
+    public function __construct(ArticlesRepository $a_rep, CommentsRepository $c_rep,PhotosRepository $p_rep){
 
         parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu),new \Corp\Repositories\PhotosRepository(new \Corp\Photo));
         
-        
+        $this->p_rep = $p_rep;
         $this->a_rep = $a_rep;
         $this->c_rep = $c_rep;
         
@@ -59,7 +62,22 @@ class ArticlesController extends SiteController
     	$this->content_head = $article->title;
         $this->title_head = $article->title;
         
+        $bar='right';
+        $photos=$this->getPhotos();
+        
+        $indexBar = view(env('THEME').'.indexBar')->with('photos',$photos)->with('bar',$bar)->render();
+        $this->vars = array_add($this->vars,'indexBar',$indexBar);  
+        
+        
+        
         return $this->renderOutput();
+    }
+    protected function getPhotos() 
+{
+        $photo = $this->p_rep->get(['image','title','created_at'],Config::get('settings.home_photo_count'));
+
+        return $photo;
+
     }
 
 }
