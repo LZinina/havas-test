@@ -112,7 +112,7 @@
 </script>
 <script src="{{asset(env('THEME'))}}/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous">
 </script>
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset(env('THEME'))}}/js/app.js) }}"></script>
 <script src="{{asset(env('THEME'))}}/js/comment-reply.js"></script>
 <script src="{{asset(env('THEME'))}}/js/myscripts.js" ></script>
 

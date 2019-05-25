@@ -15,9 +15,9 @@
 //    return view('welcome');
 //});
 
-Auth::routes();
+Route::auth();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/','IndexController',[
 										'only'=>['index'],
 									  	'names'=>['index'=>'home']
@@ -40,9 +40,13 @@ Route::resource('music','MusicController',[
 									  ]);
 Route::match(['get','post'],'/contacts',['uses'=>'ContactsController@index','as'=>'contacts']);
 
-Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+Route::group(['as' => 'admin.', 'prefix'=>'admin','middleware'=>'auth'],function(){
 	//admin
 	Route::get('/',['uses' =>'Admin\IndexController@index','as' => 'adminIndex']);
 	
-	Route::resource('/articles','Admin\ArticlesController');
+	Route::resource('/posts','Admin\PostsController',[
+										'parametres' =>[
+											'articles' => 'alias']
+									  ]);
+	
 });

@@ -37,20 +37,34 @@
     </div>
   </div>
 
-  @if (Route::has('login'))
-    <div class="my-3">
+  <div class="my-3">
       <h3 class="font-italic border-bottom bg-light p-3 ">Вход на сайт</h3>
       <div class="font-italic border bg-light p-3 ">
-      @auth
-        <div><a href="{{ url('/') }}">На главную</a></div>
-       @else
-         <div><a href="{{ route('login') }}">Login</a></div>
-       @if (Route::has('register'))
-         <div><a href="{{ route('register') }}">Register</a></div>
-       @endif
-      @endauth
+      
+      <ul class="navbar-nav ml-auto">
+      @guest
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+        </li>
+      @if (Route::has('register'))
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+          </li>
+      @endif
+      @else
+          <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ Auth::user()->name }} <span class="caret"></span></a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+              @csrf
+              </form>
+            </div>
+          </li>
+      @endguest
+        </ul>
+      
       </div>
     </div>
-  @endif
   
 

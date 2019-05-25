@@ -5,7 +5,11 @@ namespace Corp\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Corp\Http\Controllers\Controller;
 use Auth;
+use Corp\User;
 use Menu;
+
+use Gate;
+
 
 class AdminController extends \Corp\Http\Controllers\Controller
 {
@@ -18,11 +22,14 @@ class AdminController extends \Corp\Http\Controllers\Controller
     protected $vars;
 
     public function __construct() {
-    	$this->$user = Auth::user();
-    	if (!$this->user) {
-    		abort(403);
-    	}
-    };
+    	$this->middleware('auth');
+        $this->middleware(function ($request, $next) {
+            if(Gate::denies('VIEW_ADMIN_ARTICLES')){
+                abort(403);
+            }
+            return $next($request);
+        });
+    }
 
     public function renderOutput(){
     	$this->vars = array_add($this->vars,'title',$this->title);
@@ -34,22 +41,22 @@ class AdminController extends \Corp\Http\Controllers\Controller
     	$this->vars = array_add($this->vars,'navigation',$navigation);
 
     	if($this->content) {
-    		$this->vars = array_add($this->vars,'content',$content);
-    	}
+    		$this->vars = array_add($this->vars,'content',$this->content);
+    	};
 
-    	$footer = view(env('THEME').'.admin.footer')->render();
-		$this->vars = array_add($this->vars,'footer',$footer);
+    	//$footer = view(env('THEME').'.admin.footer')->render();
+		//$this->vars = array_add($this->vars,'footer',$footer);
 
 		return view($this->template)->with($this->vars);
-    };
+    }
 
     public function getMenu()
     	{
     		return Menu::make('adminMenu', function($menu) {
-    			$menu->add('Статьи',array('route' => 'admin.articles.index'));
-    			$menu->add('Меню',array('route' => 'admin.articles.index'));
-    			$menu->add('Пользователи',array('route' => 'admin.articles.index'));
-    			$menu->add('Привилегии',array('route' => 'admin.articles.index'));
-    		})
-    	};
+    			$menu->add('Статьи',array('route' => 'admin.posts.index'));
+    			$menu->add('Меню',array('route' => 'admin.posts.index'));
+    			$menu->add('Пользователи',array('route' => 'admin.posts.index'));
+    			$menu->add('Привилегии',array('route' => 'admin.posts.index'));
+    		});
+    	}
 }

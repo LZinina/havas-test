@@ -42,6 +42,7 @@ class ContactsController extends SiteController
     		});
 
     		if($result) {
+                //Session::flash('status','Email is send');
     			return redirect()->route('contacts')->with('status','Email is send');
     		}
 

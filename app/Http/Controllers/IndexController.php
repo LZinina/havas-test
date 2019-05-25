@@ -9,6 +9,7 @@ use Corp\Repositories\ArticlesRepository;
 use Corp\Repositories\PhotosRepository;
 use Photo;
 use Config;
+use Auth;
 
 
 class IndexController extends SiteController

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Validator;
 use Auth;
+use Corp\User;
 use Corp\Article;
 use Corp\Comment;
 
@@ -70,6 +71,9 @@ class CommentController extends SiteController
         $comment = new Comment($data); 
         if($user) {
             $comment->user_id = $user->id;
+            $comment->name = $user->name;
+            $comment->email = $user->email;
+            $comment->site = $user->email;
         }
 
         $post = Article::find($data['article_id']);

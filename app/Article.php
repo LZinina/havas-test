@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     //
-
+    protected $fillable = ['title','text','img','alias','desc','category_id'];
+    
     public function category() {
     	return $this->belongsTo('Corp\Category','category_id','id');
     }
