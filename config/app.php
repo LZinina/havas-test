@@ -177,8 +177,8 @@ return [
         'Lavary\Menu\ServiceProvider',
         Collective\Html\HtmlServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class
-
+        Intervention\Image\ImageServiceProvider::class,
+        Klisl\Locale\LocaleServiceProvider::class
     ],
 
     /*

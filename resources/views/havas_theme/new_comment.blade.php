@@ -8,7 +8,7 @@
 		<div class="px-3 col comment-meta commentmetadata">
 			<div class="intro">
 				<div class="px-3 commentDate row justify-content-between text-black-50">
-					только что добавлен                     
+					{{__('message.text_just_added')}}                    
 				</div>
 			</div>
 			<div class="comment-body">

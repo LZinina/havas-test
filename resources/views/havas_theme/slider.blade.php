@@ -6,9 +6,11 @@
     @foreach($sliders as $slider)
 
     <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-      <img src="{{asset(env('THEME'))}}/images/about/{{$slider->img->max}} " class="d-block w-100 pic" alt="{{$slider->title}}">
+      <img src="{{asset(env('THEME'))}}/images/about/{{$slider->img}} " class="d-block w-100 pic" alt="{{$slider->title}}">
       <div class="carousel-caption d-none d-md-block">
         <h5>{{$slider->title}}</h5>
+        
+        
       </div>
     </div>
     
@@ -16,6 +18,7 @@
     
   </div>
 </div>
-
+@else
+<p>00</p>
 @endif
 

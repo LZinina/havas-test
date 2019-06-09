@@ -7,7 +7,8 @@
       <img data-gallery-tag="{{$photo->album->title}}" class="gallery-item img-thumbnail" src="{{asset(env('THEME'))}}/images/photos/{{$photo->image}}" />
       
   @endforeach
-
+@else
+<p></p>
 @endif
 </div>
 

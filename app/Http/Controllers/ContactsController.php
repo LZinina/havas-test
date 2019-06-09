@@ -3,19 +3,23 @@
 namespace Corp\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Corp\Repositories\PhotosRepository;
 use Mail;
 use Config;
-
+use Photo;
+use Requisite;
+use Corp\Repositories\RequisitesRepository;
 
 
 class ContactsController extends SiteController
 {
     //
-    public function __construct(){
+    public function __construct(PhotosRepository $p_rep, RequisitesRepository $req_rep){
 
-        parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu));
-        
-        $this->template = env('THEME').'.contacts';
+        parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu),new \Corp\Repositories\PhotosRepository(new \Corp\Photo), new \Corp\Repositories\RequisitesRepository(new \Corp\Requisite));
+        $this->p_rep = $p_rep;
+        $this->req_rep = $req_rep;
+        $this->template = env('THEME').'.articles';
     }
 
     public function index(Request $request)
@@ -45,21 +49,25 @@ class ContactsController extends SiteController
                 //Session::flash('status','Email is send');
     			return redirect()->route('contacts')->with('status','Email is send');
     		}
-
     	}
     	
         $this->keywords = 'Havas.uz';
         $this->meta_desc = 'Havas.uz';
-        $this->title_head = 'Контакты';
-        $this->content_head = 'Контакты';
+        $this->title_head = trans('message.text_Havas_guruhi');
+        $this->content_head = trans('message.text_contacts');
         
-        $content = view(env('THEME').'.contact_content')->render();
+        $requisites = $this->getRequisites();
+
+        $content = view(env('THEME').'.contact_content')->with('requisites',$requisites)->render();
         $this->vars = array_add($this->vars,'content',$content);
 
-        $bar='left';
-        $indexBar = view(env('THEME').'.indexBar')->with('bar',$bar)->render();
-        $this->vars = array_add($this->vars,'indexBar',$indexBar);  
-
         return $this->renderOutput();
+    }
+
+    public function getRequisites()
+    {
+        $requisites=$this->req_rep->get('*',FALSE,FALSE,FALSE);
+        
+        return $requisites;
     }
 }

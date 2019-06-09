@@ -43,26 +43,20 @@ class IndexController extends SiteController
         $sliderItems = $this->getSliders();
 
         $sliders = view(env('THEME').'.slider')->with('sliders',$sliderItems)->render();
-        $bar='right';
-
-        $photos=$this->getPhotos();
-        
-        $indexBar = view(env('THEME').'.indexBar')->with('photos',$photos)->with('bar',$bar)->render();
-        $this->vars = array_add($this->vars,'indexBar',$indexBar);  
         
         $this->vars = array_add($this->vars,'sliders',$sliders);
 
         $this->keywords = 'Havas.uz';
         $this->meta_desc = 'Havas.uz';
-        $this->title_head = 'Havas guruhi';
-        $this->content_head = 'Новости';
+        $this->title_head = trans('message.text_Havas_guruhi');
+        $this->content_head = trans('message.text_news');
         
         return $this->renderOutput();
     }
 
     protected function getArticles($alias=FALSE) 
     {
-        $articles = $this->a_rep->get('*',FALSE,TRUE);
+        $articles = $this->a_rep->get('*',FALSE,TRUE,FALSE);
        
         return $articles;
     }
@@ -74,13 +68,7 @@ class IndexController extends SiteController
         return $sliders;
     }
 
-protected function getPhotos() 
-{
-        $photo = $this->p_rep->get(['image','title','created_at'],Config::get('settings.home_photo_count'));
 
-        return $photo;
-
-    }
 
     /**
      * Show the form for creating a new resource.

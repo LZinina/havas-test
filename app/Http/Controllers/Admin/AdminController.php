@@ -20,6 +20,15 @@ class AdminController extends \Corp\Http\Controllers\Controller
     protected $content = FALSE;
     protected $title;
     protected $vars;
+    protected $ab_rep;
+    protected $sh_rep;
+    protected $cat_rep;
+    protected $sl_rep;
+    protected $mus_rep;
+    protected $res_rep;
+    protected $li_rep;
+
+
 
     public function __construct() {
     	$this->middleware('auth');
@@ -44,8 +53,8 @@ class AdminController extends \Corp\Http\Controllers\Controller
     		$this->vars = array_add($this->vars,'content',$this->content);
     	};
 
-    	//$footer = view(env('THEME').'.admin.footer')->render();
-		//$this->vars = array_add($this->vars,'footer',$footer);
+    	$footer = view(env('THEME').'.admin.footer')->render();
+		$this->vars = array_add($this->vars,'footer',$footer);
 
 		return view($this->template)->with($this->vars);
     }
@@ -53,10 +62,22 @@ class AdminController extends \Corp\Http\Controllers\Controller
     public function getMenu()
     	{
     		return Menu::make('adminMenu', function($menu) {
-    			$menu->add('Статьи',array('route' => 'admin.posts.index'));
-    			$menu->add('Меню',array('route' => 'admin.posts.index'));
-    			$menu->add('Пользователи',array('route' => 'admin.posts.index'));
-    			$menu->add('Привилегии',array('route' => 'admin.posts.index'));
+    			$menu->add('Новости',array('route' => 'admin.posts.index'));
+
+                $menu->add('Музыкальные категории',array('route' => 'admin.categories.index'));
+                $menu->add('Музыкальные ресурсы',array('route' => 'admin.res_names.index'));
+                $menu->add('Музыкальные ссылки',array('route' => 'admin.links.index'));
+                $menu->add('Музыка',array('route' => 'admin.musics.index'));
+                $menu->add('Слайдер',array('route' => 'admin.sliders.index'));
+    			$menu->add('Альбомы с фото',array('route' => 'admin.albums.index'));
+                $menu->add('Фото',array('route' => 'admin.photos.index'));
+                $menu->add('Видео',array('route' => 'admin.videos.index'));
+                $menu->add('Расписание концертов',array('route' => 'admin.shedules.index'));
+                $menu->add('О нас',array('route' => 'admin.abouts.index'));
+                $menu->add('Реквизиты',array('route' => 'admin.requisites.index'));
+    			$menu->add('Пользователи',array('route' => 'admin.users.index'));
+    			$menu->add('Привилегии',array('route' => 'admin.permissions.index'));
+
     		});
     	}
 }

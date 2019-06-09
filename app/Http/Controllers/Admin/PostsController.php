@@ -4,7 +4,7 @@ namespace Corp\Http\Controllers\Admin;
 
 use Gate;
 use Corp\Article;
-use Corp\Category;
+
 use Corp\Http\Requests;
 use Illuminate\Http\Request;
 use Corp\Http\Controllers\Controller;
@@ -26,7 +26,7 @@ class PostsController extends AdminController
 
         $this->a_rep = $a_rep;
 
-        $this->template = env('THEME').'.admin.articles';
+        $this->template = env('THEME').'.admin.admin_template';
     }
     /**
      * Display a listing of the resource.
@@ -35,8 +35,7 @@ class PostsController extends AdminController
      */
     public function index()
     {
-        $this->title = 'Менеджер статей';
-
+       
         $articles = $this->getArticles();
 
         $this->content = view(env('THEME').'.admin.articles_content')->with('articles',$articles)->render();
@@ -110,7 +109,7 @@ class PostsController extends AdminController
         $article=$this->a_rep->one($alias);
         
                
-        $content_header = 'Редактирование материала - '. $article->title;
+        $content_header = 'Редактирование материала - '. $article->title_ru;
         
         
         $this->content = view(env('THEME').'.admin.articles_create_content')->with(['article' => $article, 'content_header'=>$content_header])->render();
@@ -145,6 +144,14 @@ class PostsController extends AdminController
      */
     public function destroy($alias=FALSE)
     {
-        //
+        $article=$this->a_rep->one($alias);
+        
+       $result = $this->a_rep->deleteArticle($article);
+        
+        if(is_array($result) && !empty($result['error'])) {
+            return back()->with($result);
+        }
+        
+        return redirect('/admin')->with($result);
     }
 }

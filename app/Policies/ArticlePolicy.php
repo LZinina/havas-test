@@ -25,4 +25,8 @@ class ArticlePolicy
     public function edit(User $user) {
         return $user->canDo('UPDATE_ARTICLES');
     }
+
+    public function destroy(User $user) {
+        return $user->canDo('DELETE_ARTICLES');
+    }
 }

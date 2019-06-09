@@ -17,9 +17,10 @@ class CreatePhotosTable extends Migration
             $table->increments('id')->unsigned();
             
             $table->string('image');
-            
             $table->string('title');
-            
+            $table->integer('album_id')->unsigned()->default(1);
+            $table->foreign('album_id')->references('id')->on('albums');
+
             $table->timestamps();
         });
     }

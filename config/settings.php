@@ -1,7 +1,7 @@
 <?php 
 return [
 'home_photo_count' => 2,
-'paginate' =>2,
+'paginate' =>10,
 'recent_comments'=>3,
 'key_table' => 'articles',
 'key_field' => 'article_id',

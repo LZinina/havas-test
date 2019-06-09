@@ -4,20 +4,20 @@
 @foreach ($articles as $item)
     <div class="card">
       <img src="{{asset(env('THEME'))}}/images/articles/{{$item->img}}" class="card-img-top" alt="{{$item->title}}" width="100%">
-      <div class="card-body">
+      <div class="card-body ">
         <div class="border-bottom">
             <h5 class="card-title">{{$item->title}}</h5>
         </div>
         <p class="blog-post-meta"></p>
-        <p class="card-text">{{str_limit($item->text,100)}}</p>
+        <p class="card-text">{!!str_limit($item->text,100)!!}</p>
         
-        <div class="row justify-content-between ">
-        <a href="{{route('articles.show',['alias' => $item->alias])}}" >Читать далее</a>
-        <a href="{{route('articles.show',['alias'=>$item->alias])}}" ><i class="far fa-comment-dots"></i> {{count($item->comments) ? count($item->comments) : '0'}} comments</a>
+        <div class="row justify-content-between px-3">
+        <a href="{{route('articles.show',['alias' => $item->alias])}}" >{{__('message.text_read_more')}}...</a>
+        <a href="{{route('articles.show',['alias'=>$item->alias])}}" ><i class="far fa-comment-dots"></i> {{count($item->comments) ? count($item->comments) : '0'}} {{__('message.text_comments')}}</a>
         </div>
       </div>
       <div class="card-footer">
-      <small class="text-muted">Создано: {{$item->created_at->format('F d, Y')}} by {{$item->user->name}}</small>
+      <small class="text-muted">{{__('message.text_created')}}: {{$item->created_at->format('F d, Y')}} {{__('message.text_by')}} {{$item->user->name}}</small>
       </div>
     </div>
 @endforeach
@@ -46,7 +46,7 @@
   @endif
 </nav>
 @else
-<p>Новостей нет</p>
+<p>{{__('message.text_no_news')}}</p>
 
 
 @endif

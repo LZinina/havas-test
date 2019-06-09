@@ -39,7 +39,7 @@ class ArticlesRepository extends Repository {
 		}
 		
 		if(empty($data['alias'])) {
-			$data['alias'] = $this->transliterate($data['title']);
+			$data['alias'] = $this->transliterate($data['title_ru']);
 		}
 		
 		if($this->one($data['alias'],FALSE)) {
@@ -87,7 +87,7 @@ class ArticlesRepository extends Repository {
 		}
 		
 		if(empty($data['alias'])) {
-			$data['alias'] = $this->transliterate($data['title']);
+			$data['alias'] = $this->transliterate($data['title_ru']);
 		}
 		
 		$result = $this->one($data['alias'],FALSE);
@@ -125,5 +125,19 @@ class ArticlesRepository extends Repository {
 
 	}
 	
+	public function deleteArticle($article) {
+		
+		if(Gate::denies('destroy', $article)) {
+			abort(403);
+		}
+		
+		$article->comments()->delete();
+		unlink(public_path().'/'.env('THEME').'/images/articles/'.$article->img);
+		
+		if($article->delete()) {
+			return ['status' => 'Материал удален'];
+		}
+		
+	}
 }
 ?>

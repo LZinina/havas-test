@@ -43,8 +43,12 @@ class ArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=>'required|max:255',
-            'text'=>'required'
+            'title_en'=>'required|max:255',
+            'text_en'=>'required',
+            'title_uz'=>'required|max:255',
+            'text_uz'=>'required',
+            'title_ru'=>'required|max:255',
+            'text_ru'=>'required'
         ];
     }
 }

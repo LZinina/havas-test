@@ -58,26 +58,18 @@ class ArticlesController extends SiteController
     	$content=view(env('THEME').'.article_content')->with('article',$article)->render();
 		
 		$this->vars = array_add($this->vars,'content',$content);
-    	
-    	$this->content_head = $article->title;
-        $this->title_head = $article->title;
+    	$this->title_head = trans('message.text_Havas_guruhi');
+        if(isset($article->id)) {
+    	$this->content_head = $article->title_ru;
+        //$this->title_head = $article->title;
+        }
+
         
-        $bar='right';
-        $photos=$this->getPhotos();
-        
-        $indexBar = view(env('THEME').'.indexBar')->with('photos',$photos)->with('bar',$bar)->render();
-        $this->vars = array_add($this->vars,'indexBar',$indexBar);  
         
         
         
         return $this->renderOutput();
     }
-    protected function getPhotos() 
-{
-        $photo = $this->p_rep->get(['image','title','created_at'],Config::get('settings.home_photo_count'));
-
-        return $photo;
-
-    }
+    
 
 }

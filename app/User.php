@@ -40,6 +40,7 @@ class User extends Authenticatable
     public function articles() {
         return $this->hasMany('Corp\Article');
     }
+    
 
     public function roles() {
         return $this->belongsToMany('Corp\Role','user_role');

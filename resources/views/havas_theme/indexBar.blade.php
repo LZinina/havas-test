@@ -1,7 +1,7 @@
 @if ($bar=='right')
   @if ($photos)
       <h3 class=" font-italic border-bottom bg-light p-3 my-3">
-        Новое фото
+        {{__('message.text_new_photo')}}
       </h3>
       
         <div class="row justify-content-center px-3">
@@ -13,7 +13,7 @@
             </div>
           @endforeach
      
-          <a href="{{route('photos.index')}}">Больше фото  <i class="fas fa-long-arrow-alt-right"></i></a>    
+          <a href="{{route('photos.index')}}">{{__('message.text_photo_more')}}  <i class="fas fa-long-arrow-alt-right"></i></a>    
         </div>
   @endif
   @endif     
@@ -22,33 +22,33 @@
       
   @endif
   <div class="my-3">
-    <h3 class="font-italic border-bottom bg-light p-3 ">Наши страницы</h3>
+    <h3 class="font-italic border-bottom bg-light p-3 ">{{__('message.text_our_pages')}}</h3>
     <ol class="list-unstyled">
       <li class="border-bottom"><a href="https://www.youtube.com/channel/UCjnUHmzR-uxMlBQGi_PxZUQ" target="_blank">YouTube</a></li>
-      <li class="border-bottom"><a href="#">Twitter</a></li>
-      <li class="border-bottom"><a href="#">Facebook</a></li>
+      <li class="border-bottom"><a href="https://www.facebook.com/HAVAS-guruhi-142516083059709/">Facebook</a></li>
+      <li class="border-bottom"><a href="https://www.instagram.com/havas_guruhi_official/">Instagram</a></li>
     </ol>
   </div>
   <div class="my-3">
-    <h3 class="font-italic border-bottom bg-light p-3 ">Наш адрес</h3>
+    <h3 class="font-italic border-bottom bg-light p-3 ">{{__('message.text_our_address')}}</h3>
     <div class="font-italic border bg-light p-3 ">
-      <div class="border-bottom">Ташкент, массив Чилонзор</div>
+      <div class="border-bottom">{{__('message.text_tashkent')}}</div>
       <div><i class="fas fa-phone-square fa-flip-horizontal"></i> +998 90 188 30 71</div>
     </div>
   </div>
-
+ <!--
   <div class="my-3">
-      <h3 class="font-italic border-bottom bg-light p-3 ">Вход на сайт</h3>
+      <h3 class="font-italic border-bottom bg-light p-3 ">{{__('message.text_log_on_to_site')}}</h3>
       <div class="font-italic border bg-light p-3 ">
-      
+     
       <ul class="navbar-nav ml-auto">
       @guest
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+          <a class="nav-link" href="{{ route('login') }}">{{__('message.text_login')}}</a>
         </li>
       @if (Route::has('register'))
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+            <a class="nav-link" href="{{ route('register') }}">{{__('message.text_register')}}</a>
           </li>
       @endif
       @else
@@ -66,5 +66,5 @@
       
       </div>
     </div>
-  
+  -->
 

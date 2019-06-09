@@ -14,7 +14,7 @@ class PhotoController extends SiteController
         
         $this->p_rep = $p_rep;
                 
-        $this->template = env('THEME').'.photos';
+        $this->template = env('THEME').'.articles';
     }
 
     public function index()
@@ -24,8 +24,8 @@ class PhotoController extends SiteController
         $content = view(env('THEME').'.photo_content')->with('photos',$photos)->render();
         $this->vars = array_add($this->vars,'content',$content);
         
-        $this->title_head = 'Фотогалерея';
-        $this->content_head = 'Фотогалерея';
+        $this->title_head = trans('message.text_Havas_guruhi');
+        $this->content_head = trans('message.text_gallery');
 
         $bar='left';
 
@@ -36,7 +36,7 @@ class PhotoController extends SiteController
     }
 
     public function getPhotos($alias=FALSE){
-    	$photos=$this->p_rep->get('*',FALSE,FALSE);
+    	$photos=$this->p_rep->get('*',FALSE,TRUE,FALSE);
     	if($photos){
     		//$photos->load('album');
     	}

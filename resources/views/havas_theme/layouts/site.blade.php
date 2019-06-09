@@ -13,7 +13,7 @@
     <link href="{{asset(env('THEME'))}}/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="{{asset(env('THEME'))}}/css/prettyPhoto.css" rel="stylesheet">
     <link href="{{asset(env('THEME'))}}/css/album.css" rel="stylesheet">
-
+    
 
 
 
@@ -79,6 +79,7 @@
   <body class="bg-bl">
   <div class="container">
   <header class="blog-header py-3 bg-grad">
+    @include('locales.locale')
     @yield('navigation')
     <img src="{{asset(env('THEME'))}}/images/banner.jpg" class="img-fluid rounded" width="100%"/>
   </header>
@@ -119,8 +120,8 @@
 <script src="{{asset(env('THEME'))}}/js/photojs/popper.min.js"></script>
 <script src="{{asset(env('THEME'))}}/js/photojs/mauGallery.min.js"></script>
 <script src="{{asset(env('THEME'))}}/js/photojs/scripts.js"></script>
-<script src="{{asset(env('THEME'))}}/js/musicjs/main.js" type="text/javascript"></script>
-<script src="{{asset(env('THEME'))}}/js/musicjs/jquery-ui-1.8.21.custom.min.js" type="text/javascript"></script>
+
+
 </div>
 </body>
 </html>
