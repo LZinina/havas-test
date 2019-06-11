@@ -37,6 +37,10 @@ class IndexController extends SiteController
         
         $articles = $this->getArticles();
 
+        
+
+
+
         $content = view(env('THEME').'.content')->with('articles',$articles)->render();
         $this->vars = array_add($this->vars,'content',$content);
         
@@ -57,9 +61,13 @@ class IndexController extends SiteController
     protected function getArticles($alias=FALSE) 
     {
         $articles = $this->a_rep->get('*',FALSE,TRUE,FALSE);
+        
        
         return $articles;
     }
+
+   
+    
 
      public function getSliders()
     {

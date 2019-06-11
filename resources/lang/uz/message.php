@@ -3,7 +3,7 @@ return [
 'text_home' => 'Bosh sahifa',
 'text_news' => 'Xabarlar',
 'text_music' => 'Musiqa',
-'text_video' => 'Vodeolar',
+'text_video' => 'Videolar',
 'text_gallery' => 'Foto',
 'text_concert_schedule' => 'Konsert jadvali',
 'text_about_us' => 'Biz haqida',
@@ -43,6 +43,8 @@ return [
 'text_Dostonbek_Gulomjonov' => 'Dostonbek Gulomjonov',
 'text_Shahnoza_Gulomjonova' => 'Shahnoza Gulomjonova',
 'text_Robiya_Gulomjonova' => 'Robiya Gulomjonova',
-'text_Havas_guruhi' => 'Havas group'
+'text_Havas_guruhi' => 'Havas guruhi',
+'text_music_albums' => 'Musiqa',
+'text_listen' => 'Listen & Download'
 ]
 ?>

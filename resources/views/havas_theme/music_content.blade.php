@@ -13,8 +13,8 @@
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th></th>
-              <th></th>
+              <th>{{__('message.text_music_albums')}}:</th>
+              <th><i class="fas fa-download"></i></th>
             </tr>
           </thead>
           <tbody>

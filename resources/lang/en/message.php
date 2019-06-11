@@ -43,6 +43,8 @@ return [
 'text_Dostonbek_Gulomjonov' => 'Dostonbek Gulomjonov',
 'text_Shahnoza_Gulomjonova' => 'Shahnoza Gulomjonova',
 'text_Robiya_Gulomjonova' => 'Robiya Gulomjonova',
-'text_Havas_guruhi' => 'Havas group'
+'text_Havas_guruhi' => 'Havas group',
+'text_music_albums' => 'Music albums',
+'text_listen' => 'Listen & Download'
 ]
 ?>

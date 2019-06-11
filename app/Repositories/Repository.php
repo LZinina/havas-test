@@ -9,7 +9,7 @@ abstract class Repository  {
 
 	public function get($select = '*', $take = FALSE, $pagination = FALSE, $where=FALSE) {
 		
-		$builder = $this->model->select($select);
+		$builder = $this->model->select($select)->orderBy('created_at','desc');
 		
 		if ($take) {
 		

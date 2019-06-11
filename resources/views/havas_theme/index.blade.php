@@ -12,6 +12,7 @@
 @section('indexBar')
 	{!! $indexBar!!}
 @endsection
+
 @section('footer')
 	{!! $footer!!}
 @endsection

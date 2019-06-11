@@ -66,8 +66,8 @@ class AdminController extends \Corp\Http\Controllers\Controller
 
                 $menu->add('Музыкальные категории',array('route' => 'admin.categories.index'));
                 $menu->add('Музыкальные ресурсы',array('route' => 'admin.res_names.index'));
-                $menu->add('Музыкальные ссылки',array('route' => 'admin.links.index'));
                 $menu->add('Музыка',array('route' => 'admin.musics.index'));
+                $menu->add('Музыкальные ссылки',array('route' => 'admin.links.index'));
                 $menu->add('Слайдер',array('route' => 'admin.sliders.index'));
     			$menu->add('Альбомы с фото',array('route' => 'admin.albums.index'));
                 $menu->add('Фото',array('route' => 'admin.photos.index'));

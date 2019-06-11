@@ -44,6 +44,7 @@ return [
 'text_Shahnoza_Gulomjonova' => 'Шахноза Гуломжонова',
 'text_Robiya_Gulomjonova' => 'Робия Гуломжонова',
 'text_Havas_guruhi' => 'Группа "Хавас"',
-
+'text_music_albums' => 'Музыкальные альбомы',
+'text_listen' => 'Слушать и скачать'
 ]
 ?>
